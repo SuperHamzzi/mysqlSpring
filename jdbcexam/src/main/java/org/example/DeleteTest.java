@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class ConnectionTest {
+public class DeleteTest {
     public static void main(String[] args) {
 
         //DB연결을 위한 인터페이스
@@ -28,11 +28,10 @@ public class ConnectionTest {
             //insert into role(role_id, name) values (값, '값);
             // conn아 지금 연결된 DBMS에 이 SQL을 준비해줘, 그런데 물음표 부분을 남겨놔
             // 준비한 것을 참조하도록 PreparedStatement를 반환
-           ps = conn.prepareStatement("insert into role(role_id,name) values(? , ?)");
+           ps = conn.prepareStatement("delete from role where role_id =?");
 
             //물음표에 값을 채워줘 . 바인딩 , 바인딩 까지 하면 SQL을실행할 준비.
             ps.setInt(1,3); // 1번쨰 물음표에 정수 값을 설정.
-            ps.setString(2,"ROLE_TEST"); //2번째 물음표에 문자열 값을 지정
 
             //SQL 실행 executeUpdate(); - insert, update, delete 할 때 사용
             int updateCount = ps.executeUpdate();
